@@ -1,0 +1,69 @@
+<div class="form-container" *ngIf="!reviewMode">
+    <mat-card>
+      <mat-card-title>New Investment Entry</mat-card-title>
+      <mat-card-content>
+        <form [formGroup]="investmentForm" (ngSubmit)="submitForm()">
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Asset Type</mat-label>
+            <mat-select formControlName="assetType" required>
+              <mat-option *ngFor="let type of assetTypes" [value]="type">{{ type }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="investmentForm.get('assetType')?.hasError('required')">
+              Asset type is required
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Quantity</mat-label>
+            <input matInput type="number" formControlName="quantity" required>
+            <mat-error *ngIf="investmentForm.get('quantity')?.hasError('required')">
+              Quantity is required
+            </mat-error>
+            <mat-error *ngIf="investmentForm.get('quantity')?.hasError('min')">
+              Quantity must be greater than 0
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Purchase Price</mat-label>
+            <input matInput type="number" formControlName="purchasePrice" required>
+            <mat-error *ngIf="investmentForm.get('purchasePrice')?.hasError('required')">
+              Purchase Price is required
+            </mat-error>
+            <mat-error *ngIf="investmentForm.get('purchasePrice')?.hasError('min')">
+              Purchase Price must be greater than 0
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Purchase Date</mat-label>
+            <input matInput type="date" formControlName="purchaseDate" required>
+            <mat-error *ngIf="investmentForm.get('purchaseDate')?.hasError('required')">
+              Purchase Date is required
+            </mat-error>
+          </mat-form-field>
+  
+          <div class="button-group">
+            <button mat-raised-button color="primary" type="submit" [disabled]="investmentForm.invalid">Review</button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  
+  <div class="review-container" *ngIf="reviewMode">
+    <mat-card>
+      <mat-card-title>Review Your Investment</mat-card-title>
+      <mat-card-content>
+        <p><strong>Asset Type:</strong> {{ investmentForm.value.assetType }}</p>
+        <p><strong>Quantity:</strong> {{ investmentForm.value.quantity }}</p>
+        <p><strong>Purchase Price:</strong> {{ investmentForm.value.purchasePrice }}</p>
+        <p><strong>Purchase Date:</strong> {{ investmentForm.value.purchaseDate | date }}</p>
+      </mat-card-content>
+      <mat-card-actions class="button-group">
+        <button mat-stroked-button color="primary" (click)="editForm()">Edit</button>
+        <button mat-raised-button color="accent" (click)="confirmSubmission()">Confirm</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  

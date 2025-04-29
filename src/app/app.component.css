@@ -1,0 +1,54 @@
+/* .container {
+    padding: 20px;
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+  
+  a.active-link {
+    font-weight: bold;
+    color: red;
+  }
+   */
+
+   /* Layout and toolbar */
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 15px;
+  }
+  
+  /* Mobile styles */
+  .menu-icon {
+    display: none;
+    cursor: pointer;
+  }
+  
+  .mobile-menu {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background: #e3f2fd;
+  }
+  
+  /* Responsive breakpoints */
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+    }
+  
+    .menu-icon {
+      display: block;
+    }
+  }
+  

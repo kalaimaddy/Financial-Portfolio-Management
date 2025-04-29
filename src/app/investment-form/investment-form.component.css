@@ -1,0 +1,54 @@
+.form-container,
+.review-container {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.field-row {
+  display: flex;
+  flex-direction: column;
+}
+
+::ng-deep .cdk-overlay-pane {
+  z-index: 1000 !important;
+}
+
+
+.button-group {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+mat-card {
+  width: 100%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+}
+
+mat-form-field {
+  margin-top: 15px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .button-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  mat-card-title {
+    font-size: 20px;
+  }
+
+  mat-card-content p {
+    font-size: 16px;
+  }
+}
