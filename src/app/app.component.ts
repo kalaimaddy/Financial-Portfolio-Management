@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'financial-portfolio-manager';
+
+  mobileMenuOpen = false;
+
+  toggleMenu() {
+    this.mobileMenuOpen = !this.mobileMenuOpen;
+  }
 }
